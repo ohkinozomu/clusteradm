@@ -143,7 +143,8 @@ func (o *Options) complete(cmd *cobra.Command, args []string) (err error) {
 	o.values.ResourceRequirement = *resourceRequirement
 
 	o.values.ManagedKubeconfig = o.managedKubeconfigFile
-	o.values.RegistrationFeatures = genericclioptionsclusteradm.ConvertToFeatureGateAPI(genericclioptionsclusteradm.SpokeMutableFeatureGate, ocmfeature.DefaultSpokeRegistrationFeatureGates)
+	o.values.RegistrationConfiguration.RegistrationFeatures = genericclioptionsclusteradm.ConvertToFeatureGateAPI(genericclioptionsclusteradm.SpokeMutableFeatureGate, ocmfeature.DefaultSpokeRegistrationFeatureGates)
+	o.values.RegistrationConfiguration.ClientCertExpirationSeconds = o.clientCertExpirationSeconds
 	o.values.WorkFeatures = genericclioptionsclusteradm.ConvertToFeatureGateAPI(genericclioptionsclusteradm.SpokeMutableFeatureGate, ocmfeature.DefaultSpokeWorkFeatureGates)
 
 	// set mode based on mode and singleton
